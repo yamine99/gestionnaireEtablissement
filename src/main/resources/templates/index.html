@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<div class="container-fluid text-center mx-1 mt-2">
+    <h2 class="card bg-info text-white h2 py-lg-3 py-md-2 py-sm-1">List des étudiants</h2>
+
+    <div th:if="${message}" class="alert alert-success text-center">
+            [[${message}]]
+    </div>
+    <table class="table thead-dark">
+        <thead class="thead-dark">
+         <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse mail</th>
+                <th>Télephone</th>
+                <th colspan="2">Action</th>
+         </tr>
+        </thead>
+         <tBody>
+           <th:block th:each="student : ${listeStudent}">
+                  <tr th:if="${student.role != ''}">
+
+                      <td>[[${student.id}]]</td>
+                      <td>[[${student.lastName}]]</td>
+                      <td>[[${student.email}]]</td>
+                      <td>[[${student.tel}]]</td>
+
+                       <td class="row">
+
+                          <a  class="col h5 mr-3 btn btn-outline-danger mx-1" th:href="@{'/delete/'+${student.id}}">Supprimé</a>
+                       </td>
+                  </tr>
+
+
+           </th:block>
+         </tBody>
+    </table>
+
+</div>
+    <div class="container-fluid">
+
+        <a th:href="@{/}" class="btn btn-outline-info my-md-3 my-sm-1"> Voir list</a>
+        <a th:href="@{/accueil/add}" class="btn btn-outline-info my-md-3 my-sm-1" > Ajouter</a>
+         <a th:href="@{/login}" class="btn btn-outline-danger my-md-3 my-sm-1"> Déconnexion</a>
+
+    </div>
+</body>
+</html>
