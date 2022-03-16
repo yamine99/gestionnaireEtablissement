@@ -17,6 +17,9 @@
 
 
 ####Deployment 
+Docker
+
+ANSIBLE
 
 
 
