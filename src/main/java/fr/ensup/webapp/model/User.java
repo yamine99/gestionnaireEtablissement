@@ -3,19 +3,13 @@ package fr.ensup.webapp.model;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue (value = "USER")
 public class User extends  Person{
-     @Id
-    @GeneratedValue(strategy  = GenerationType.IDENTITY)
-    private Integer id;
 
     private String mdp;
-
-    @Enumerated(value = EnumType.STRING)
     private String role;
 
-    public User(String firstName, String lastName, String email, String adresse, String tel, String mdp, String role) {
-        super(firstName, lastName, email, adresse, tel);
+    public User(int id,String firstName, String lastName, String email, String adresse, String tel, String mdp, String role) {
+        super(id, firstName, lastName, email, adresse, tel);
         this.mdp =mdp;
         this.role =role;
     }
@@ -25,13 +19,7 @@ public class User extends  Person{
 
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getMdp() {
         return mdp;

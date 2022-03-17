@@ -2,27 +2,22 @@ package fr.ensup.webapp.model;
 
 import javax.persistence.*;
 
-@Entity
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="person_type", discriminatorType = DiscriminatorType.STRING)
+@MappedSuperclass
 public abstract class Person {
 
     @Id
     @GeneratedValue(strategy  = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     private String firstName;
-
     private String lastName;
-
     private String email;
-
     private String adresse;
-
     private String tel;
 
 
-    public Person(String firstName, String lastName, String email, String adresse, String tel) {
+    public Person(int id, String firstName, String lastName, String email, String adresse, String tel) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

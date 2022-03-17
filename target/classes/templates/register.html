@@ -43,7 +43,9 @@
                                 <select th:field="*{role}" required class="form-select">
 
                                     <option th:each="role : ${roles}"
-                                            th:value="${role}" th:text="${role}"></option>
+                                            th:value="${role}" th:text="${role}"
+
+                                    ></option>
                                 </select>
                             </div>
                         </div>

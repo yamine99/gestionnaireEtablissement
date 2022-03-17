@@ -14,10 +14,11 @@ services:
   db:
     container_name: bdd
     image: mysql
+    restart: always
     environment:
       - MYSQL_USER=yamine
       - MYSQL_PASSWORD=yamine
-      - MYSQL_DATABASE=gestionarticle
+      - MYSQL_DATABASE=ecole
       - MYSQL_ALLOW_EMPTY_PASSWORD=non
     networks:
       - networkApplication

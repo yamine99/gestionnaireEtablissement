@@ -11,6 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.sql.Date;
+
 
 @SpringBootApplication
 public class WebappApplicationLuncher {
@@ -19,14 +21,11 @@ public class WebappApplicationLuncher {
 
         ConfigurableApplicationContext configurableApplicationContext =  SpringApplication.run(WebappApplicationLuncher.class, args);
 
-        PersonRepository studentRepository =
-                configurableApplicationContext.getBean(StudentRepository.class);
-        PersonRepository userRepository =
-                configurableApplicationContext.getBean(UserRepository.class);
-        Person student = new Student("yamine", "salem","salem@gmail.com", "17 avenue ", "0769660846" );
-        Person user = new User("yamine", "salem","salem@gmail.com", "17 avenue ", "0769660846","12345", "");
 
-       //studentRepository.save(student);
+        Person student = new Student(1,"yamine", "salem","salem@gmail.com", "17 avenue ", "0769660846","12/25/2000" );
+        Person user = new User(1,"yamine", "salem","salem@gmail.com", "17 avenue ", "0769660846","12345", "");
+
+      // studentRepository.save(student);
      // userRepository.save(user);
     }
 

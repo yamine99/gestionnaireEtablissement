@@ -16,8 +16,8 @@ public class StudentService {
 
     @Autowired private StudentRepository repo;
 
-    public List<Person> findAll(){
-        return (List<Person>) repo.findAll();
+    public List<Student> findAll(){
+        return (List<Student>) repo.findAll();
     }
 
      public void save(Student student){
@@ -35,8 +35,8 @@ public class StudentService {
       }
 
 
-     public Person get(int id) throws ArticleNotFoundException {
-        Optional<Person> result=  repo.findById(id);
+     public Student get(int id) throws ArticleNotFoundException {
+        Optional<Student> result=  repo.findById(id);
 
         if(result.isPresent()){
             return result.get();

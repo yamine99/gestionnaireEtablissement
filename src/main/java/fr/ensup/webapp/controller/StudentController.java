@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -23,38 +24,57 @@ public class StudentController {
 
 
     @GetMapping("/accueil")
-    public String showArticlList(Model model){
-        List<Person> listeStudent = service.findAll();
+    public String showArticlList(Model model,  HttpServletRequest request){
+        boolean permission = (boolean) request.getSession().getAttribute("isAuthenticated");
+       if(  permission){
+           List<Student> listeStudent = service.findAll();
+           model.addAttribute("listeStudent", listeStudent);
 
-        model.addAttribute("listeStudent", listeStudent);
+           return "index";
+       }else{
+           return "redirect:/login";
+       }
 
-        return "index";
     }
 
      @GetMapping("/accueil/add")
-      public String ShowNewAddArticl(Model model, RedirectAttributes ra){
+      public String ShowNewAddArticl(Model model, RedirectAttributes ra, HttpServletRequest request){
+         boolean permission = (boolean) request.getSession().getAttribute("isAuthenticated");
+         if(  permission){
           model.addAttribute("student", new Student());
 
           model.addAttribute("pageTitle", "Ajouter un étudiant");
 
           return "student_form";
+         }else{
+            return "redirect:/login";
+        }
     }
 
       @PostMapping("accueil/add/save")
-      public String SaveStudent(Student student,  RedirectAttributes ra){
-           System.out.println(student.toString());
+      public String SaveStudent(Student student,  RedirectAttributes ra, HttpServletRequest request){
+          boolean permission = (boolean) request.getSession().getAttribute("isAuthenticated");
+          if(  permission){
             service.save(student);
             ra.addFlashAttribute("message", "Un nouveau student a été ajouté !");
 
          return "redirect:/accueil";
+          }else{
+              return "redirect:/login";
+          }
     }
 
     @GetMapping("/delete/{id}")
-    public String DeleteStudent(@PathVariable("id") int id, Model model, RedirectAttributes ra) throws StudentService.ArticleNotFoundException {
-        service.delete(id);
-        ra.addFlashAttribute("message", "Un  student a été supprimé !");
+    public String DeleteStudent(@PathVariable("id") int id, Model model, RedirectAttributes ra,  HttpServletRequest request) throws StudentService.ArticleNotFoundException {
+        boolean permission = (boolean) request.getSession().getAttribute("isAuthenticated");
+        if(  permission) {
+            service.delete(id);
+            ra.addFlashAttribute("message", "Un  student a été supprimé !");
 
-        return "redirect:/accueil";
+            return "redirect:/accueil";
+        }else{
+            return "redirect:/login";
+        }
     }
 /*
 

@@ -2,18 +2,27 @@ package fr.ensup.webapp.model;
 
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-@DiscriminatorValue (value = "STUDENT")
 public class Student extends  Person{
 
-    @Id
-    @GeneratedValue(strategy  = GenerationType.IDENTITY)
-    private int id;
+
+   private String dateofbirth;
 
 
-    public Student(String firstName, String lastName, String email, String adresse, String tel) {
-        super(firstName, lastName, email, adresse, tel);
+    public Student(int id,String firstName, String lastName, String email, String adresse, String tel, String dateofbirth) {
+        super(id, firstName, lastName, email, adresse, tel);
+        this.dateofbirth = dateofbirth;
+    }
+
+
+    public String getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(String dateofbirth) {
+        this.dateofbirth = dateofbirth;
     }
 
     public Student() {
@@ -22,8 +31,8 @@ public class Student extends  Person{
 
     @Override
     public String toString() {
-        return  super.toString()+"Student{" +
-                "id=" + id +
+        return "Student{" +
+                "dateofbirth=" + dateofbirth +
                 '}';
     }
 }

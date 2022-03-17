@@ -1,0 +1,13 @@
+fr\ensup\webapp\repository\PersonRepository.class
+fr\ensup\webapp\service\UserService.class
+fr\ensup\webapp\repository\UserRepository.class
+fr\ensup\webapp\service\StudentService$ArticleNotFoundException.class
+fr\ensup\webapp\service\StudentService.class
+fr\ensup\webapp\controller\UserController.class
+fr\ensup\webapp\model\Role.class
+fr\ensup\webapp\controller\StudentController.class
+fr\ensup\webapp\model\User.class
+fr\ensup\webapp\repository\StudentRepository.class
+fr\ensup\webapp\model\Person.class
+fr\ensup\webapp\model\Student.class
+fr\ensup\webapp\WebappApplicationLuncher.class
