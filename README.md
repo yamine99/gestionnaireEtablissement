@@ -8,6 +8,9 @@ Création d'un logiciel de gestion d'établissement scolaire
 ## Mode d'emploi
 ##### Prérequis : Avoir  git et docker installé sur votre ordinateur
 Ouvrez un terminal / CMD
+
+Lancer Docker
+
 Cloner le projet :
 - git clone https:https://github.com/yamine99/gestionnaireEtablissement.git
 
