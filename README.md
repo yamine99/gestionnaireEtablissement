@@ -28,8 +28,7 @@ Et voilà votre application est prête à être utilisée.
  L'application composer de 5 page :
 
 - Page de connexion
-- Page d'inscription
-- Page de création d'un utilisateur(Directeur/ Responsable)
+- Page d'inscription d'un utilisateur(Directeur/ Responsable)
 - Page de création d'un étudiant
 - Page de liste d'étudiants
 
