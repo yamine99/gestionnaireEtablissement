@@ -47,6 +47,7 @@ public class UserController {
         String passwordHash = Secure.hachPassword(user.getMdp());
             user.setMdp(passwordHash);
             service.save(user);
+            System.out.println(user.getRole());
             ra.addFlashAttribute("message", "Un nouveau utilisateur a été ajouté !");
 
       return "redirect:/";
@@ -57,7 +58,7 @@ public class UserController {
             String passwordHash = Secure.hachPassword(user.getMdp());
             user.setMdp(passwordHash);
 
-           if(!service.get(user).isEmpty() && service.get(user).get(0).getRole().equals("Directeur") ){
+           if(service.get(user).get(0).getRole().equals("Directeur") ){
                request.getSession().setAttribute("isAuthenticated", true);
                System.out.println( service.get(user).get(0).getRole());
                 return "redirect:/accueil";
